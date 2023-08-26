@@ -35,14 +35,14 @@ public class UserController {
     }
 
     @PutMapping(value = "{id}")
-    public Mono<UserDto> updateEmployee(@RequestBody UserDto employeeDto, @PathVariable("id") String employeeId) {
-        return userService.updateUser(employeeDto, employeeId);
+    public Mono<UserDto> updateUser(@RequestBody UserDto userDto, @PathVariable("id") String userId) {
+        return userService.updateUser(userDto, userId);
     }
 
     @DeleteMapping(value = "{id}")
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
     public Mono<Void> deleteEmployee(@PathVariable("id") String employeeId) {
-        return userService.deleteEmployee(employeeId);
+        return userService.deleteUser(employeeId);
     }
 
 

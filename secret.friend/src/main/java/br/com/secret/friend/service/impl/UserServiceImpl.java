@@ -20,7 +20,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Mono<UserDto> saveUser(UserDto userDto) {
-        User user = UserMapper.mapToUser(userDto);
+        User user = UserMapper.mapToUser(userDto,true);
         Mono<User> savedUser = userRepository.save(user);
         return savedUser.map(UserMapper::mapToUserDto);
     }
@@ -53,7 +53,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Mono<Void> deleteEmployee(String userId) {
+    public Mono<Void> deleteUser(String userId) {
         return userRepository.deleteById(userId);
     }
 }
